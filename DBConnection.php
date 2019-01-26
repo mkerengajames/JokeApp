@@ -6,13 +6,14 @@
  * Time: 6:37 AM
  */
 $database = "jokes";
+$servername = "localhost";
 $username = "root";
 $password = "";
 
-$connection = db2_connect($database, $username , $password);
+$server = new mysqli($servername, $username , $password);
 
-if($connection){
-    echo("db connect success");
+if($server){
+    echo("server connect success");
 }else{
-    echo("db connect fail");
+    echo("server connect fail");
 }
