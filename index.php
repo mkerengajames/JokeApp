@@ -24,9 +24,9 @@
 
         }
 
-        Joke H = new Joke("<?php $JokeId ?> ", "<?php $JokeText ?>", "<?php $JokeDate ?>");
+        var  H = new Joke("<?php $JokeId ?> ", "<?php $JokeText ?>", "<?php $JokeDate ?>");
 
-
+        alert(H.displayJokeId());
     </script>
 </head>
 <body>
@@ -36,10 +36,10 @@
                 <h3>ID</h3>
             </td>
             <td>
-                <h3>JOKE TEXT</h3>
+                <h3>JOKETEXT</h3>
             </td>
             <td>
-                <h3>JOKE DATE</h3>
+                <h3>JOKEDATE</h3>
             </td>
         </tr>
         <tr>
