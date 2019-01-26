@@ -4,12 +4,17 @@
         JokeApp | The Laughing world
     </title>
     <script language="javascript" type="text/javascript">
-        var Joke = function(text,date){
+        var Joke = function(id,text,date){
+            this.id = id;
             this.text = text;
             this.date = date;
 
-            this.displayJokeName = function(){
-                return?(this.text);
+            this.displayJokeId = function(){
+                return(this.id);
+            }
+
+            this.displayJokeText = function(){
+                return(this.text);
             }
 
 
@@ -19,16 +24,33 @@
 
         }
 
-        Joke HA = new Joke("<?php $JokeText ?>", "<?php $JokeDate ?>");
-        document.write(HA.displayJokeName());
-        document.write(HA.displayJokeDate());
+        Joke H = new Joke("<?php $JokeId ?> ", "<?php $JokeText ?>", "<?php $JokeDate ?>");
+
+
     </script>
 </head>
 <body>
     <table>
         <tr>
             <td>
-                1
+                <h3>ID</h3>
+            </td>
+            <td>
+                <h3>JOKE TEXT</h3>
+            </td>
+            <td>
+                <h3>JOKE DATE</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <script>document.write(H.displayJokeId());</script>
+            </td>
+            <td>
+                <script>document.write(H.displayJokeText());</script>
+            </td>
+            <td>
+                <script>document.write(H.displayJokeDate());</script>
             </td>
         </tr>
     </table>
@@ -43,5 +65,6 @@
  * Time: 4:25 AM
  */
 
+$JokeId = "1";
 $JokeText = "this is the first joke";
 $JokeDate = "2019-01-26";
