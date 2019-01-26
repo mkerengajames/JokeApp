@@ -22,6 +22,7 @@ $JokeDate = "2019-01-26";
     <style type="text/css">
         body{
             background: aliceblue;
+
         }
         table, td{
             background: aqua;
