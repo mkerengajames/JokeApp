@@ -6,9 +6,13 @@
  * Time: 4:25 AM
  */
 
+$appName = "JOKE APP";
+$creater="James Mkerenga";
+$date = date("Y-m-d");
+
 $JokeId = "1";
 $JokeText = "this is the first joke";
-$JokeDate = "2019-01-26";
+$JokeDate = $date;
 
 ?>
 
@@ -39,7 +43,26 @@ $JokeDate = "2019-01-26";
         table{
             margin-left:auto;
             margin-right:auto;
+            width: 40%;
         }
+
+        #ftodaydate{
+            float: right;
+        }
+
+        #fcreatername{
+            float: left;
+        }
+
+        #header{
+            text-align: center;
+            text-decoration-color: cadetblue;
+        }
+
+        h1{
+            color: dodgerblue;
+        }
+
     </style>
     <script language="javascript" type="text/javascript">
         var Joke = function(id,text,date){
@@ -66,7 +89,11 @@ $JokeDate = "2019-01-26";
     </script>
 </head>
 <body>
+    <font id="header"><h1><?php echo $appName ?></h1></font>
     <table>
+        <tr>
+            <td id="td1" colspan="3"><font id="fcreatername">App created by:<b><?php echo $creater ?></b></font> <font id="ftodaydate">Today is: <b><?php echo $date ?></b></font></td>
+        </tr>
         <tr>
             <td>
                 <h3>ID</h3>
