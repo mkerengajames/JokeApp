@@ -1,3 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: mkere
+ * Date: 1/26/2019
+ * Time: 4:25 AM
+ */
+
+$JokeId = "1";
+$JokeText = "this is the first joke";
+$JokeDate = "2019-01-26";
+
+?>
+
+
+
 <html>
 <head>
     <title>
@@ -24,13 +40,11 @@
 
         }
 
-        var  H = new Joke("<?php $JokeId ?> ", "<?php $JokeText ?>", "<?php $JokeDate ?>");
-
-        alert(H.displayJokeId());
+        var  H = new Joke("<?php echo $JokeId ?> ", "<?php echo $JokeText ?>", "<?php echo $JokeDate ?>");
     </script>
 </head>
 <body>
-    <table>
+    <table border>
         <tr>
             <td>
                 <h3>ID</h3>
@@ -57,14 +71,3 @@
 </body>
 </html>
 
-<?php
-/**
- * Created by PhpStorm.
- * User: mkere
- * Date: 1/26/2019
- * Time: 4:25 AM
- */
-
-$JokeId = "1";
-$JokeText = "this is the first joke";
-$JokeDate = "2019-01-26";
