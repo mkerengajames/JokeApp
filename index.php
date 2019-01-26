@@ -4,17 +4,24 @@
         JokeApp | The Laughing world
     </title>
     <script language="javascript" type="text/javascript">
-        var Joke = function(name,date){
-            this.name = name;
+        var Joke = function(text,date){
+            this.text = text;
             this.date = date;
 
-            this.display = function(){
-                return?("Joke name" + this. name " and the Joke date is " + this.date);
+            this.displayJokeName = function(){
+                return?(this.text);
             }
+
+
+            this.displayJokeDate = function(){
+                return(this.date);
+            }
+
         }
 
-        Joke HA = new joke("haJoke", "2019-1-26");
-        HA.display();
+        Joke HA = new Joke("haJoke", "2019-1-26");
+        HA.displayJokeName();
+        HA.displayJokeDate();
     </script>
 </head>
 <body>
