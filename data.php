@@ -19,12 +19,14 @@ if ($db) {
     echo "Error creating database: " . $conn->error;
 }
 
-$queryIDs = $conn->query("select ID, JokeText, JokeDate from $databaseName");
+$query = $conn->query("select JokeText, JokeDate from $databaseName");
 
 
-if($queryIDs){
-    echo "data received";
+if($query){
+    echo "data received<br><br>";
 }else{
     echo "data received";
 }
+
+
 

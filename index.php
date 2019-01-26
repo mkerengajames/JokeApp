@@ -8,8 +8,20 @@
 
 require 'data.php';
 
+$index = 0;
+
+$row = mysqli_fetch_array($query);
+
+while($row){
+    $index;
+    echo $row["JokeText"];
+    echo $row["JokeDate"];
+    $index++;
+}
+
+
 $appName = "JOKE APP";
-$creater="James Mkerenga";
+$creator="James Mkerenga";
 $date = date("Y-m-d");
 
 $JokeId = "1";
@@ -88,14 +100,31 @@ $JokeDate = $date;
 
         }
 
-        var  H = new Joke("<?php echo $JokeId ?> ", "<?php echo $JokeText ?>", "<?php echo $JokeDate ?>");
+        var  H = new Joke("<?php
+                while($row = mysqli_fetch_array($query)){
+                    $index;
+                    echo $index++;
+                }
+            ?>",
+
+            "<?php
+            while($row = mysqli_fetch_array($query)){
+                echo $row["JokeText"];
+            }
+            ?>",
+
+            "<?php
+            while($row = mysqli_fetch_array($query)){
+                echo $row["JokeDate"];
+            }
+            ?>");
     </script>
 </head>
 <body>
     <font id="header"><h1><?php echo $appName ?></h1></font>
     <table>
         <tr>
-            <td id="td1" colspan="3"><font id="fcreatername">App created by:<b><?php echo $creater ?></b></font> <font id="ftodaydate">Today is: <b><?php echo $date ?></b></font></td>
+            <td id="td1" colspan="3"><font id="fcreatername">App created by:<b><?php echo $creator ?></b></font> <font id="ftodaydate">Today is: <b><?php echo $date ?></b></font></td>
         </tr>
         <tr>
             <td>
