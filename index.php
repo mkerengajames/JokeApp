@@ -19,9 +19,9 @@
 
         }
 
-        Joke HA = new Joke("haJoke", "2019-1-26");
-        HA.displayJokeName();
-        HA.displayJokeDate();
+        Joke HA = new Joke("<?php $JokeText ?>", "<?php $JokeDate ?>");
+        document.write(HA.displayJokeName());
+        document.write(HA.displayJokeDate());
     </script>
 </head>
 <body>
@@ -42,3 +42,6 @@
  * Date: 1/26/2019
  * Time: 4:25 AM
  */
+
+$JokeText = "this is the first joke";
+$JokeDate = "2019-01-26";
