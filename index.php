@@ -6,6 +6,8 @@
  * Time: 4:25 AM
  */
 
+require 'data.php';
+
 $appName = "JOKE APP";
 $creater="James Mkerenga";
 $date = date("Y-m-d");

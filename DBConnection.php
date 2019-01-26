@@ -10,10 +10,11 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 
-$server = new mysqli($servername, $username , $password);
+$conn = new mysqli($servername, $username , $password);
 
-if($server){
-    echo("server connect success");
+if($conn){
+    echo("server connect success<br>");
 }else{
     echo("server connect fail");
 }
+
