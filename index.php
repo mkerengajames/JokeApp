@@ -60,8 +60,9 @@ $JokeDate = $date;
         }
 
         h1{
-            color: dodgerblue;
+            color: black;
         }
+
 
     </style>
     <script language="javascript" type="text/javascript">
