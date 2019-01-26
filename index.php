@@ -4,7 +4,17 @@
         JokeApp | The Laughing world
     </title>
     <script language="javascript" type="text/javascript">
-        alert("hello");
+        var Joke = function(name,date){
+            this.name = name;
+            this.date = date;
+
+            this.display = function(){
+                return?("Joke name" + this. name " and the Joke date is " + this.date);
+            }
+        }
+
+        Joke HA = new joke("haJoke", "2019-1-26");
+        HA.display();
     </script>
 </head>
 <body>
