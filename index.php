@@ -19,6 +19,27 @@ $JokeDate = "2019-01-26";
     <title>
         JokeApp | The Laughing world
     </title>
+    <style type="text/css">
+        body{
+            background: aliceblue;
+        }
+        table, td{
+            background: aqua;
+            text-align: center;
+            alignment: center;
+            padding: 20px;
+            border-width: thin 0px;
+            border-style: solid;
+            border-color: black;
+            border-collapse: collapse;
+            align-content: center;
+        }
+
+        table{
+            margin-left:auto;
+            margin-right:auto;
+        }
+    </style>
     <script language="javascript" type="text/javascript">
         var Joke = function(id,text,date){
             this.id = id;
@@ -44,7 +65,7 @@ $JokeDate = "2019-01-26";
     </script>
 </head>
 <body>
-    <table border>
+    <table>
         <tr>
             <td>
                 <h3>ID</h3>
