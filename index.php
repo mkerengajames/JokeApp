@@ -7,26 +7,12 @@
  */
 
 require 'data.php';
-
-$index = 0;
-
-$row = mysqli_fetch_array($query);
-
-while($row){
-    $index;
-    echo $row["JokeText"];
-    echo $row["JokeDate"];
-    $index++;
-}
-
+require 'date.php';
+//include 'newjoke.php';
 
 $appName = "JOKE APP";
 $creator="James Mkerenga";
-$date = date("Y-m-d");
 
-$JokeId = "1";
-$JokeText = "this is the first joke";
-$JokeDate = $date;
 
 ?>
 
@@ -100,32 +86,25 @@ $JokeDate = $date;
 
         }
 
-        var  H = new Joke("<?php
-                while($row = mysqli_fetch_array($query)){
-                    $index;
-                    echo $index++;
-                }
-            ?>",
-
-            "<?php
-            while($row = mysqli_fetch_array($query)){
-                echo $row["JokeText"];
-            }
-            ?>",
-
-            "<?php
-            while($row = mysqli_fetch_array($query)){
-                echo $row["JokeDate"];
-            }
-            ?>");
+        //var  H = new Joke("", "", "");
     </script>
 </head>
 <body>
-    <font id="header"><h1><?php echo $appName ?></h1></font>
-    <table>
+    <font id="header"><h1><?php echo $appName ?></h1></font>]
+
+    <table border>
         <tr>
             <td id="td1" colspan="3"><font id="fcreatername">App created by:<b><?php echo $creator ?></b></font> <font id="ftodaydate">Today is: <b><?php echo $date ?></b></font></td>
         </tr>
+        <tr>
+
+            <td colspan = "3">
+                                <form action="newjoke.php" method="POST">
+                                    <label>create new Joke:</label>
+                                    <input type="textfield" name="newjoketext" />
+                                    <input type="button" value="submit" name="submit"/>
+                                </form>
+            </td>
         <tr>
             <td>
                 <h3>ID</h3>
@@ -137,9 +116,10 @@ $JokeDate = $date;
                 <h3>JOKEDATE</h3>
             </td>
         </tr>
-        <tr>
+            <!--
             <td>
                 <script>document.write(H.displayJokeId());</script>
+
             </td>
             <td>
                 <script>document.write(H.displayJokeText());</script>
@@ -147,7 +127,22 @@ $JokeDate = $date;
             <td>
                 <script>document.write(H.displayJokeDate());</script>
             </td>
-        </tr>
+            -->
+            <?php
+
+            if($query) {
+                $index = 1;
+                while ($row = mysqli_fetch_array($query)) {
+                    echo "<tr><td>" . "$index" . " </td>
+                 <td>" . $row["JokeText"] . " </td>
+                <td>" . $row["JokeDate"] . "</td><br></tr>" .
+                        $index++;
+
+                }
+            }else{
+                echo "<tr><td colspan='3'> <font>no jokes posted yet</font> </td><br></tr>";
+            }
+            ?>
     </table>
 </body>
 </html>

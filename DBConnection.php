@@ -13,7 +13,7 @@ $password = "";
 $conn = new mysqli($servername, $username , $password);
 
 if($conn){
-    echo("server connect success<br>");
+    //echo("server connect success<br>");
 }else{
     echo("server connect fail");
 }
