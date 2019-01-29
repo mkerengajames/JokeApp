@@ -9,15 +9,6 @@
 require 'DBConnection.php';
 require 'date.php';
 
-$sql = "use $database";
-
-$db = $conn->query($sql);
-
-if ($db) {
-    //echo "Database connected successfully<br>";
-} else {
-    echo "Error creating database: " . $conn->error;
-}
 
 $query = $conn->query("select JokeText, JokeDate from $database");
 

@@ -111,10 +111,10 @@ $creator="James Mkerenga";
                 <h3>ID</h3>
             </td>
             <td>
-                <h3>JOKETEXT</h3>
+                <h3>JOKE</h3>
             </td>
             <td>
-                <h3>JOKEDATE</h3>
+                <h3>POSTDATE</h3>
             </td>
         </tr>
             <!--

@@ -15,19 +15,29 @@ $newJoketext = $_POST['newjoketext'];
 $newJokedate = $date;
 
 
-if(!(isset($submit))  || (!(isset($newJokedate))) || ((is_numeric($newJokedate)))) {
-        $queryAddJoke = $conn->query("INSERT INTO jokes (JokeText,JokeDate) VALUES ('$newJoketext', '$newJokedate');");
+if((isset($submit))  && (!(empty($newJoketext))) && (!(is_numeric($newJoketext)))) {
+        $sql = "INSERT INTO jokes (
+                                                                JokeText, 
+                                                                JokeDate
+                                                                )
+                                                        VALUES (
+                                                                  '$newJoketext', 
+                                                                  '$newJokedate'
+                                                                );
+                                            ";
 
-        if ($queryAddJoke) {
+        $queryAddJoke = $conn->query($sql);
+
+        if ($queryAddJoke != null) {
+            echo "<script>window.location.replace('/JokeApp');</script>";
             echo "<script>alert(\"Joke posted\");</script>";
         } else {
             echo "<script>window.location.replace('/JokeApp');</script>";
-            //echo "<script>alert(\"Query error Joke not posted\");</script>";
+            echo "<script>alert(\"Query error Joke not posted\");</script>";
         }
-
     }else {
         echo "<script>window.location.replace('/JokeApp');</script>";
-        //echo "<script>alert(\"Check to enter correct joke before posting\");</script>";
+        echo "<script>alert(\"Check to enter correct joke before posting\");</script>";
     }
 
  ?>
