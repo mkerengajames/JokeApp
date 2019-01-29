@@ -8,6 +8,7 @@
 
 require 'data.php';
 require 'date.php';
+
 //include 'newjoke.php';
 
 $appName = "JOKE APP";
@@ -99,11 +100,11 @@ $creator="James Mkerenga";
         <tr>
 
             <td colspan = "3">
-                                <form action="newjoke.php" method="POST">
-                                    <label>create new Joke:</label>
-                                    <input type="textfield" name="newjoketext" />
-                                    <input type="button" value="submit" name="submit"/>
-                                </form>
+                        <form action="/JokeApp/newjoke.php" method="POST">
+                            <label>create new Joke:</label>
+                            <input type="text" name="newjoketext" />
+                            <input type="submit" value="submit" name="submit"/>
+                        </form>
             </td>
         <tr>
             <td>

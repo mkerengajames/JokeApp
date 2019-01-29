@@ -8,17 +8,35 @@
 require 'date.php';
 require 'DBConnection.php';
 
-$newJoketext = $_POST['newjoketext'];
-$newJokedate = $date;
-$database;
+$submit=$_POST['submit'];
 
-if(!is_null($newJoketext)) {
-    $queryAddJoke = $conn->query("insert into $database (JokeText,JokeDate) values ('$newJoketext', '$newJokedate')");
-}else{
-    echo "<script>alert(\"please enter joke before posting\");</script>";
-}
-if($queryAddJoke) {
-    echo "<script>alert(\"Joke posted\");</script>";
-}else{
-    echo "<script>alert(\"Joke not posted\");</script>";
-}
+$newJoketext = $_POST['newjoketext'];
+
+$newJokedate = $date;
+
+
+if(!(isset($submit))  || (!(isset($newJokedate))) || ((is_numeric($newJokedate)))) {
+        $queryAddJoke = $conn->query("INSERT INTO jokes (JokeText,JokeDate) VALUES ('$newJoketext', '$newJokedate');");
+
+        if ($queryAddJoke) {
+            echo "<script>alert(\"Joke posted\");</script>";
+        } else {
+            echo "<script>window.location.replace('/JokeApp');</script>";
+            //echo "<script>alert(\"Query error Joke not posted\");</script>";
+        }
+
+    }else {
+        echo "<script>window.location.replace('/JokeApp');</script>";
+        //echo "<script>alert(\"Check to enter correct joke before posting\");</script>";
+    }
+
+ ?>
+
+<html>
+<style>
+    body{
+        background: aliceblue;
+
+    }
+</style>
+</html>
