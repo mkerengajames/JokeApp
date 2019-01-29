@@ -21,3 +21,4 @@ var Joke = function(id,text,date){
 var H = new Joke("<?php $JokeId ?> ", "<?php $JokeText ?>", "<?php $JokeDate ?>");
 
 alert(H.displayJokeId());
+//alert
