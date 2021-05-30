@@ -6,6 +6,7 @@
  * Time: 4:25 AM
  */
 
+require 'browser.php';
 require 'data.php';
 require 'date.php';
 
@@ -26,25 +27,30 @@ $creator="James Mkerenga";
     </title>
     <style type="text/css">
         body{
-            background: aliceblue;
+            background: black;
 
         }
         table, td{
             background: aqua;
             text-align: center;
             alignment: center;
-            padding: 20px;
             border-width: thin 0px;
             border-style: solid;
             border-color: black;
+            border-bottom-width: thick;
             border-collapse: collapse;
             align-content: center;
+            border-radius:30px;
+            padding:20px;
         }
+
+
 
         table{
             margin-left:auto;
             margin-right:auto;
             width: 40%;
+            margin-top: 0px;
         }
 
         #ftodaydate{
@@ -64,7 +70,50 @@ $creator="James Mkerenga";
             color: black;
         }
 
+        #jokeinput{
+            width:300px;
+            height:30px;
+            border-style: groove;
+            border-radius: 10px;
+        }
 
+        #jokepostbutton{
+            height:30px;
+            border-style: double;
+            border-radius: 10px;
+        }
+
+        #jokedeletebutton{
+             border-style: double;
+             border-radius: 40px;
+             height:30px;
+             width: 30px;
+            background-color: indianred;
+            text-align: center;
+
+         }
+
+        #headertd{
+            border-bottom-width: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            background-image: url("header4.png");
+        }
+
+        #datestd{
+            border-bottom-width: thin;
+        }
+
+        #posttd{
+            background-color: aquamarine;
+            border-radius: 0px;
+        }
+
+        #posttr{
+            background-color: green;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
     </style>
     <script language="javascript" type="text/javascript">
         var Joke = function(id,text,date){
@@ -88,24 +137,51 @@ $creator="James Mkerenga";
         }
 
         //var  H = new Joke("", "", "");
+
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            h = checkTime(h);
+            document.getElementById('txt').innerHTML =
+                "<b>" + h + ":" + m + ":" + s + "Hrs"+"</b>";
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+
     </script>
 </head>
-<body>
-    <font id="header"><h1><?php echo $appName ?></h1></font>]
+<body onload ="startTime()">
 
-    <table border>
-        <tr>
-            <td id="td1" colspan="3"><font id="fcreatername">App created by:<b><?php echo $creator ?></b></font> <font id="ftodaydate">Today is: <b><?php echo $date ?></b></font></td>
+    <table>
+        <tr><td id="headertd" colspan="4"><font id="header"><h1><?php echo $appName ?></h1></font></td></tr>
+        <tr id ="datestd">
+            <td style="border-bottom: 0px" id="td1" colspan="3"><font id="fcreatername">Welcome:<b><?php echo '  '.$creator.'.' ?></b></font> <font id="ftodaydate">Today is: <b><?php echo $date."" ?></b>
+                </font></td>
+            <td style="border-bottom: 0px" id="txt"></td>
         </tr>
         <tr>
 
-            <td colspan = "3">
+            <td colspan = "4">
                         <form action="/JokeApp/newjoke.php" method="POST">
                             <label>create new Joke:</label>
-                            <input type="text" name="newjoketext" />
-                            <input type="submit" value="submit" name="submit"/>
+                            <input type="text" name="newjoketext" id="jokeinput"/>
+                            <input type="submit" value="POST" name="submit" id="jokepostbutton"/>
                         </form>
             </td>
+
+        </tr>
+        <!--
+    </table>
+
+    <table id="posttable">
+
         <tr>
             <td>
                 <h3>ID</h3>
@@ -116,8 +192,10 @@ $creator="James Mkerenga";
             <td>
                 <h3>POSTDATE</h3>
             </td>
+            <td>
+                <h3> </h3>
+            </td>
         </tr>
-            <!--
             <td>
                 <script>document.write(H.displayJokeId());</script>
 
@@ -131,20 +209,39 @@ $creator="James Mkerenga";
             -->
             <?php
 
-            if($query) {
+            if($creator == 'James Mkerenga'){
+                $creator = ' ';
+            }
+
+            if($query != NULL) {
                 $index = 1;
+
                 while ($row = mysqli_fetch_array($query)) {
-                    echo "<tr><td>" . "$index" . " </td>
-                 <td>" . $row["JokeText"] . " </td>
-                <td>" . $row["JokeDate"] . "</td><br></tr>" .
+                    echo "<tr id='posttr'><td id='posttd'><font color='maroon'><b>" . "$index" . "</b></font> </td>
+                 <td id='posttd' ><font color='blue'><b>" . $row["JokeText"] . " </b></font></br>" . $creator . "</td>
+                <td id='posttd'><b>" . $row["JokeDate"] . "</b></td>
+                <td id='posttd'>
+                        <form action='/JokeApp/deletejoke.php' method='POST'>
+                            <input type='hidden' value='.$index.' name='index'>
+                            <input type = 'submit' name='delete' value='X' width='20%' height='7%' id = 'jokedeletebutton'/>
+                        </form> 
+                    </td>
+                <br></tr>" .
                         $index++;
 
                 }
             }else{
-                echo "<tr><td colspan='3'> <font>no jokes posted yet</font> </td><br></tr>";
+                echo "<tr><td colspan='3' style='border-bottom: 0px'> <font>no jokes posted yet</font> </td><br></tr>";
             }
             ?>
+        <tr>
+            <td>
+            <font id="footer">
+                <font align="center" color="black"><?php $year ?> </font> </font>
+            </td>
+        </tr>
     </table>
+
 </body>
 </html>
 

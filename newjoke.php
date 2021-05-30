@@ -8,23 +8,36 @@
 require 'date.php';
 require 'DBConnection.php';
 
+$sql = "select * from jokes";
+
+$result = mysqli_query($conn, $sql);
+
+$totalRows = mysqli_num_rows($result);
+
+echo $index = $totalRows+1;
+
+
 $submit=$_POST['submit'];
 
 $newJoketext = $_POST['newjoketext'];
 
-$newJokedate = $date;
+$newJokedate = $datetime;
 
 
 if((isset($submit))  && (!(empty($newJoketext))) && (!(is_numeric($newJoketext)))) {
-        $sql = "INSERT INTO jokes (
+
+        $sql = "INSERT INTO $database (
+                                                                ID,
                                                                 JokeText, 
                                                                 JokeDate
                                                                 )
                                                         VALUES (
+                                                                   $index,
                                                                   '$newJoketext', 
                                                                   '$newJokedate'
                                                                 );
                                             ";
+
 
         $queryAddJoke = $conn->query($sql);
 
@@ -50,3 +63,4 @@ if((isset($submit))  && (!(empty($newJoketext))) && (!(is_numeric($newJoketext))
     }
 </style>
 </html>
+
